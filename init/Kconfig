@@ -1350,6 +1350,12 @@ config CC_OPTIMIZE_FOR_PERFORMANCE_O3
 	  Choosing this option will pass "-O3" to your compiler to optimize
 	  the kernel yet more for performance.
 
+config CC_OPTIMIZE_FOR_PERFORMANCE_OFAST
+	bool "Optimize more for performance (-Ofast)"
+	help
+	  Choosing this option will pass "-Ofast" to your compiler to optimize
+	  the kernel yet more for performance.
+
 config CC_OPTIMIZE_FOR_SIZE
 	bool "Optimize for size (-Os)"
 	help
