@@ -10,6 +10,11 @@
 export ARCH=x86 && SUBARCH=x86;
 #replace 4 with number of threads your host CPU has
 export CORECOUNT=5;
+export DEFNAME="$(hostname)_defconfig"
+
+if [[ ! -e arch/x86/configs/$DEFNAME ]]; then
+  cp CONFIGS/xanmod/gcc/config arch/x86/configs/$DEFNAME;
+fi
 
 echo "Kernel build script.";
 echo ;
@@ -27,12 +32,12 @@ while [[ $input != "q" ]]; do
   clear;
   if [[ $input == "c" ]]; then
     clear;
-    make my_defconfig;
+    make $DEFNAME;
     make -j$CORECOUNT;
   elif [[ $input == "m" ]]; then
     clear;
     make menuconfig;
-    cp .config arch/x86/configs/my_defconfig;
+    cp .config arch/x86/configs/$DEFNAME;
   elif [[ $input == "i" ]]; then
     clear;
     make modules_install;
